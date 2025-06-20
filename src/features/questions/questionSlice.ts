@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ChangeQuestionTextType, QuestionType } from "./types";
 import { OptionTextType } from "../options/types";
 import { getId } from "@/lib/utils";
+import { textType } from "@/lib/constants";
 
 export interface QuestionState {
   questions: QuestionType[];
@@ -112,6 +113,73 @@ export const questionSlice = createSlice({
       });
       state.questions = updateQuestions;
     },
+    changeQuestionType: (
+      state,
+      action: PayloadAction<{ id: string; type: string }>
+    ) => {
+      const sliceQuestions = [...state.questions];
+      const updateQuestions = sliceQuestions.map((el) => {
+        if (action.payload.id === el.id) {
+          if (textType.includes(action.payload.type)) {
+            return {
+              ...el,
+              type: action.payload.type,
+              question: "",
+              required: false,
+            };
+          } else {
+            return {
+              ...el,
+              type: action.payload.type,
+              question: "",
+              options: [{ id: `${action.payload.id}-${getId()}`, text: "" }],
+              required: false,
+            };
+          }
+        }
+        return el;
+      });
+
+      state.questions = updateQuestions;
+    },
+    changeRequired: (state, action: PayloadAction<{ id: string }>) => {
+      const sliceQuestions = [...state.questions];
+      const updateQuestions = sliceQuestions.map((el) => {
+        if (action.payload.id === el.id) {
+          return { ...el, required: !el.required };
+        }
+        return el;
+      });
+      state.questions = updateQuestions;
+    },
+    copyQuestion: (state, action: PayloadAction<{ questionIndex: number }>) => {
+      const sliceQuestions = [...state.questions];
+      const findQuestion = sliceQuestions[action.payload.questionIndex];
+      let updateQuestion;
+      if (textType.includes(findQuestion.type)) {
+        updateQuestion = { ...findQuestion, id: getId() };
+      } else {
+        const newId = getId();
+        const newOption = findQuestion.options?.map((el) => {
+          return { ...el, id: `${newId}-${getId()}` };
+        });
+
+        updateQuestion = { ...findQuestion, id: newId, options: newOption };
+      }
+
+      sliceQuestions.splice(
+        action.payload.questionIndex + 1,
+        0,
+        updateQuestion
+      );
+      state.questions = sliceQuestions;
+    },
+    removeQuestion: (state, action: PayloadAction<{ id: string }>) => {
+      const updateQuestions = state.questions.filter(
+        (el) => el.id !== action.payload.id
+      );
+      state.questions = updateQuestions;
+    },
   },
 });
 
@@ -122,5 +190,9 @@ export const {
   addOptionText,
   removeOptionText,
   moveOption,
+  changeQuestionType,
+  changeRequired,
+  copyQuestion,
+  removeQuestion,
 } = questionSlice.actions;
 export default questionSlice.reducer;

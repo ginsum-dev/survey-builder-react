@@ -9,7 +9,7 @@ export const Title = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex flex-col gap-2 p-6">
+    <div className="flex flex-col gap-2 p-6 mb-4">
       <Input
         type="text"
         className="text-lg h-12"

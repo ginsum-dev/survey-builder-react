@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { OptionType } from "../options/types";
 import { addOptionText, changeQuestionText } from "./questionSlice";
 import OptionList from "../options/OptionList";
+import { PlusIcon } from "lucide-react";
 
 interface MultipleChoiceType {
   id: string;
@@ -32,11 +33,11 @@ export default function MultipleChoiceField({
       />
       <OptionList options={options} type={type} id={id} />
       <Button
-        className="w-[130px] mt-2"
+        className="w-[80px] mt-4"
         variant="outline"
         onClick={() => dispatch(addOptionText({ id }))}
       >
-        옵션 추가
+        <div className="text-xs text-zinc-600">옵션 추가</div>
       </Button>
     </div>
   );
