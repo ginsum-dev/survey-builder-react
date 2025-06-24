@@ -13,8 +13,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { findOptionId } from "@/lib/utils";
 import { RootState } from "@/store";
-// import SubmitModal from "./SubmitModal";
 import usePreview from "./usePreview";
+import SubmitModal from "./Submit";
 
 export default function Preview() {
   const { title, description } = useSelector((state: RootState) => state.title);
@@ -135,12 +135,12 @@ export default function Preview() {
         </div>
       ))}
       <div className="flex w-full justify-center gap-2">
-        {/* <SubmitModal
+        <SubmitModal
           list={answers}
           disabled={
             !!answers.find(({ required, answer }) => required && !answer)
           }
-        /> */}
+        />
         <Button variant={"outline"} className="w-[130px]" onClick={resetAnswer}>
           양식 지우기
         </Button>
