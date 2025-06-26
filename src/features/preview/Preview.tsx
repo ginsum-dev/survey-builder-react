@@ -31,15 +31,18 @@ export default function Preview() {
   } = usePreview();
 
   return (
-    <div className="flex flex-col pb-8 gap-6">
-      <div>
+    <div className="flex flex-col gap-6 p-12 w-full">
+      <div className="flex flex-col px-6 py-6 rounded-lg bg-white gap-2">
         <div>{title}</div>
         <div>{description}</div>
         <hr />
         <div className="text-sm text-red-600">* 표시는 필수 질문임</div>
       </div>
       {questions.map(({ id, question, type, options, required }) => (
-        <div key={id}>
+        <div
+          key={id}
+          className="flex flex-col gap-2 px-6 py-6 rounded-lg bg-white"
+        >
           <div className="flex gap-1">
             <div>{question}</div>
             {required && <div className="text-red-600">*</div>}

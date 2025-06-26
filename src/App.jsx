@@ -1,11 +1,24 @@
 import { Title } from "@/features/title/Title";
 import Questions from "@/features/questions/Questions";
+import Preview from "@/features/preview/Preview";
+import { useState } from "react";
+import Nav from "@/components/custom/Nav";
+
 const App = () => {
+  const [isPreview, setIsPreview] = useState(false);
+
   return (
     <div className="w-screen h-full min-h-screen flex justify-center">
-      <div className="w-full max-w-screen-md p-8 bg-zinc-50">
-        <Title />
-        <Questions />
+      <div className="w-full max-w-screen-md  bg-zinc-50">
+        <Nav isPreview={isPreview} setIsPreview={setIsPreview} />
+        {isPreview ? (
+          <Preview />
+        ) : (
+          <div className="p-8">
+            <Title />
+            <Questions />
+          </div>
+        )}
       </div>
     </div>
   );
