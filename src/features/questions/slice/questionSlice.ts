@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ChangeQuestionTextType, QuestionType } from "./types";
-import { OptionTextType } from "../options/types";
+import { ChangeQuestionTextType, QuestionType } from "../types";
+import { OptionTextType } from "../../options/types";
 import { getId } from "@/lib/utils";
 import { textType } from "@/lib/constants";
 

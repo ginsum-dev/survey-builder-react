@@ -4,7 +4,7 @@ import {
   changeOptionText,
   moveOption,
   removeOptionText,
-} from "../questions/questionSlice";
+} from "../questions/slice/questionSlice";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";

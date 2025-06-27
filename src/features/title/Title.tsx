@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { useDispatch } from "react-redux";
-import { changeTitle, changeDesc } from "./titleSlice";
+import { changeTitle, changeDesc } from "./slice/titleSlice";
 import { Input } from "@/components/ui/input";
 
 export const Title = () => {

@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { answerType, textType } from "../../lib/constants";
 import { getId } from "@/lib/utils";
-import { addQuestion } from "./questionSlice";
+import { addQuestion } from "./slice/questionSlice";
 import { useDispatch } from "react-redux";
 import { Button } from "@/components/ui/button";
 

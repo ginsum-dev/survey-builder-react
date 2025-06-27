@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Input } from "@/components/ui/input";
-import { changeQuestionText } from "./questionSlice";
+import { changeQuestionText } from "./slice/questionSlice";
 
 interface TextFieldType {
   id: string;

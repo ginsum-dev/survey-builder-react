@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { findOptionId } from "@/lib/utils";
 import { RootState } from "@/store";
-import usePreview from "./usePreview";
+import usePreview from "./hooks/usePreview";
 import SubmitModal from "./Submit";
 
 export default function Preview() {

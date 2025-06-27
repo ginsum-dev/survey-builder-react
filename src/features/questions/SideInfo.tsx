@@ -14,7 +14,7 @@ import {
   changeRequired,
   copyQuestion,
   removeQuestion,
-} from "@/features/questions/questionSlice";
+} from "@/features/questions/slice/questionSlice";
 import { answerType } from "@/lib/constants";
 
 interface SlideInfoType {

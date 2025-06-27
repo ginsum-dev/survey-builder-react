@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { OptionType } from "../options/types";
-import { addOptionText, changeQuestionText } from "./questionSlice";
+import { addOptionText, changeQuestionText } from "./slice/questionSlice";
 import OptionList from "../options/OptionList";
 import { PlusIcon } from "lucide-react";
 
