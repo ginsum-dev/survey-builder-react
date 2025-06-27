@@ -1,12 +1,83 @@
-# React + Vite
+# 설문지 작성폼
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+이 프로젝트는 설문지를 작성하고 미리볼 수 있는 웹 페이지입니다. <br/>
+사용자는 질문을 타입별로 추가할 수 있고, 작성된 설문지의 미리보기할 수 있습니다.
 
-Currently, two official plugins are available:
+## 주요 기능
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 설문의 제목과 설명을 작성할 수 있음.
+- 설문지 질문 추가: 타입별(단문형, 장문형, 객관식, 체크박스, 드롭다운)을 선택하여 설문지를 구성할 수 있음.
+- 질문 기능 :
+  - 질문 텍스트 작성 가능.
+  - 질문의 타입을 변경할 수 있음.
+  - 질문을 복제, 삭제 할 수 있음.
+  - 질문을 답변 필수 항목으로 지정할 수 있음.
+  - 객관식, 체크박스, 드롭다운의 경우 옵션을 추가, 수정, 삭제할 수 있음.
+  - 객관식, 체크박스, 드롭다운의 경우 Drag & Drop으로 옵션 순서를 변경할 있음.
+- 미리보기 기능
+  - 작성한 질문의 결과물을 미리볼 수 있음.
+  - 질문의 답변을 해볼 수 있음.
+  - 제출하기를 눌러 답변이 작성된 내용을 볼 수 있음.
+  - 양식 지우기로 작성된 답변을 일괄적으로 초기화 할 수 있음.
 
-## Expanding the ESLint configuration
+## 기술 스택
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- react
+- typeScript.
+- redux-Toolkit: 전역 상태 관리를 위해 사용.
+- tailwindCSS : 스타일링을 위해 사용. 미리 세팅된 유틸리티 클래스를 활용하여 HTML 코드 내에서 스타일링 가능하다.
+- shadCN: UI 컴포넌트 스타일링 및 재사용성을 위해 사용. Redix UI와 Tailwind CSS를 기반으로 하는 component collection. 프로젝트 의존성에 추가하지 않고 필요한 컴포넌트만 가져다 쓸 수 있다.
+- react-dnd: 질문 순서 변경을 위한 Drag & Drop 기능 구현에 사용.
+
+## 폴더 구조
+
+```
+src/
+├── App.jsx
+├── assets/      # 이미지, 아이콘 등 정적 파일
+├── components/  # 공통 UI 컴포넌트
+│   ├── custom/
+│   └── ui/
+├── features/    # 기능별 폴더
+│   ├── options/
+│   ├── preview/
+│   ├── questions/
+│   └── title/
+├── lib/         # 유틸함수
+└── store/       # redux store
+
+
+## 추가 구현 사항
+
+- 기존 구글폼에서 변경된 UI
+  - 질문 추가 : 기존 구글폼에서 질문을 추가할 경우 필요한 타입을 미리 선택할 수 없는 점이 불편하여 질문 추가 버튼을 눌렀을때 타입을 미리 설정할 수 있는 기능을 구현하였습니다.
+  - 질문 영역 구성 : 질문을 구성하는 요소 중 질문 텍스트와 옵션 텍스트 영역을 하나로 볼 수 있도록 하고 그 외 부가적인 설정이라 생각되는 타입, 복제, 삭제, 필수 버튼을 한데 묶어 배치하여 보기 편하도록 구성하였습니다.
+- 미리보기에서 제출하기 누를시 제출미리보기 모달 구현 : 설문을 제출하기 전 답변한 사항을 한번더 확인할 수 있도록 제출미리보기를 추가하였습니다.
+
+## 설치 및 시작
+
+1.  설치
+
+```
+
+npm install
+또는
+yarn install
+
+```
+
+2.  개발서버 실행
+
+```
+
+npm run dev
+또는
+yarn dev
+
+```
+
+3. 브라우저 접속
+   http://localhost:5173/
+
+\*\* 이 프로젝트는 PC 화면에 최적화 되어 있습니다.
+```
