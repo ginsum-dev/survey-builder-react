@@ -37,7 +37,7 @@ export default function AddQuestion() {
 
   return (
     <Dialog>
-      <DialogTrigger className="">
+      <DialogTrigger className="py-4">
         <div className="w-[130px] h-9 py-2 rounded-md text-sm bg-neutral-900 text-neutral-50 shadow hover:bg-neutral-900/90">
           질문 추가하기
         </div>

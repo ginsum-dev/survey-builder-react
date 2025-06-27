@@ -31,20 +31,24 @@ export default function Preview() {
   } = usePreview();
 
   return (
-    <div className="flex flex-col gap-6 p-12 w-full">
-      <div className="flex flex-col px-6 py-6 rounded-lg bg-white gap-2">
-        <div>{title}</div>
-        <div>{description}</div>
+    <div className="flex flex-col gap-3 px-8 pb-8 w-full">
+      <div className="flex flex-col px-6 py-6 rounded-lg bg-white gap-2 text-zinc-700">
+        <span className="text-xl font-bold">
+          {title || "설문지 제목을 입력해 주세요"}
+        </span>
+        <span className="text-sm text-gray-500">
+          {description || "설문지 설명을 입력해 주세요"}
+        </span>
         <hr />
-        <div className="text-sm text-red-600">* 표시는 필수 질문임</div>
+        <div className="text-xs text-red-600">* 표시는 필수 질문임</div>
       </div>
       {questions.map(({ id, question, type, options, required }) => (
         <div
           key={id}
-          className="flex flex-col gap-2 px-6 py-6 rounded-lg bg-white"
+          className="flex flex-col gap-2 px-6 py-6 rounded-lg bg-white text-zinc-700"
         >
           <div className="flex gap-1">
-            <div>{question}</div>
+            <div className="text-lg font-medium">{question}</div>
             {required && <div className="text-red-600">*</div>}
           </div>
 
@@ -72,7 +76,7 @@ export default function Preview() {
                 })
               }
             >
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3">
                 {options?.map(({ id: optionId, text }) => (
                   <div key={optionId} className="flex items-center space-x-2">
                     <RadioGroupItem
@@ -92,7 +96,7 @@ export default function Preview() {
             </RadioGroup>
           )}
           {type === "checkbox" && (
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               {options?.map(({ id: optionId, text }) => (
                 <div key={optionId} className="flex items-center space-x-2">
                   <Checkbox
@@ -137,7 +141,7 @@ export default function Preview() {
           )}
         </div>
       ))}
-      <div className="flex w-full justify-center gap-2">
+      <div className="flex w-full justify-center gap-2 py-6">
         <SubmitModal
           list={answers}
           disabled={

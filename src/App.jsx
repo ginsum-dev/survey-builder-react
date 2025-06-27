@@ -9,12 +9,12 @@ const App = () => {
 
   return (
     <div className="w-screen h-full min-h-screen flex justify-center">
-      <div className="w-full max-w-screen-md  bg-zinc-50">
+      <div className="w-full max-w-screen-md bg-zinc-50">
         <Nav isPreview={isPreview} setIsPreview={setIsPreview} />
         {isPreview ? (
           <Preview />
         ) : (
-          <div className="p-8">
+          <div className="px-8 pb-8">
             <Title />
             <Questions />
           </div>

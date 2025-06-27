@@ -12,7 +12,7 @@ export const Title = () => {
     <div className="flex flex-col gap-2 p-6 mb-4">
       <Input
         type="text"
-        className="text-lg h-12"
+        className="text-xl h-12"
         placeholder="설문지 제목을 입력해주세요"
         value={title}
         onChange={(e) => dispatch(changeTitle(e.target.value))}
