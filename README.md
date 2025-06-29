@@ -46,6 +46,7 @@ src/
 ├── lib/         # 유틸함수
 └── store/       # redux store
 
+```
 
 ## 추가 구현 사항
 
@@ -80,4 +81,3 @@ yarn dev
    http://localhost:5173/
 
 \*\* 이 프로젝트는 PC 화면에 최적화 되어 있습니다.
-```
